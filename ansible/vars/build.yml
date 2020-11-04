@@ -1,0 +1,5 @@
+---
+
+source_base_image: "fuse7/fuse-java-openshift:1.5-15"
+base_image: "fuse7-java-openshift:1.5-15"
+base_image_project: "openshift"

@@ -1,0 +1,10 @@
+include:
+  - project: int/plat/gitlab-common
+    file: /pipelines/include.yml
+    ref: stable
+  - project: int/plat/gitlab-common
+    file: /pipelines/spring_boot_build.yml
+    ref: stable
+
+# TODO: add target security zone here
+variables: { OCP_SECURITY_ZONE: int-ctrl }

@@ -1,0 +1,50 @@
+server:
+  address: 0.0.0.0
+  port: 8085
+
+spring:
+  application:
+    name: adapter-transactional-amq
+
+camel:
+  springboot:
+    name: ${spring.application.name}
+    use-breadcrumb: true
+    use-mdc-logging: true
+
+management:
+  server:
+    port: 8086
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health,info,loggers
+  endpoint:
+    health:
+      enabled: true
+    httptrace:
+      enabled: true
+    jolokia:
+      enabled: true
+    loggers:
+      enabled: true
+
+opentracing:
+  jaeger:
+    enable-b3-propagation: true
+    enabled: true
+    log-spans: false
+    probabilistic-sampler:
+      sampling-rate: 1.0
+    tags:
+      env: dev
+    udp-sender:
+      host: localhost
+      port: 6831
+
+logging:
+  level:
+    org.apache.qpid.jms.sasl.SaslMechanismFinder: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p --- [%X{camel.breadcrumbId}] %logger : %replace(%m){'[\r\n]', ''}%n%wEx"
