@@ -8,6 +8,7 @@
 # User-specific stuff
 .idea/
 .bomgit/
+.gitlab-ci.yml
 
 # CMake
 cmake-build-*/
